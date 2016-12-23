@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+         /*
+        *  弹性盒模型：
+        *  思想和使用场景：
+        *  页面某区域的内容大小不是一成不变的，是弹性的，可变的。这种情况考虑弹性盒模型。
+        *  比如：微信，某些移动端电商页面
+        *    第一版：声明方式：
+        *    display: -webkit-box;
+          display: -moz-box;
+          display: box;
+             第二版：
+             display:-ms-flexbox(IE10)
+             第三版：
+             display: -webkit-flex;  display: flex;
+          自适应宽度属性：
+          说明：
+          对于弹性盒模型内部的元素，宽度分两种情况：
+             1）width: 500px;设置的固定宽度，你的宽度就等于设置的实际宽度；
+             2）没有设置宽度属性，设置了box-flex，代表的是子元素分配到的父元素剩余空间的比例
+             剩余空间：父元素总宽度-设置了固定宽度元素的总宽度
+             box-flex是一个比重，1,2,1  --:1/(1+2+1)
+             移动端应用： 移动端微信：头像和右边时间宽度固定，中间内容弹性变化
+          第一版：
+          -webkit-box-flex: 1;
+          -moz-box-flex: 1;
+          box-flex:1;
+          第二版：
+          -ms-flex: 1;
+          第三版：
+          -webkit-flex: 1; flex:1;
+        *
+        *
+        *第一版：
+        *父元素设置属性：
+        * display: box;
+        * box-orient(子盒子排列方向);
+        * box-direction(子盒子排列顺序方向)
+        * box-align(子盒子垂直方向对齐方式)
+        * box-pack（子盒子水平方向对齐方式）
+        * flex-wrap(子元素换行)
+        *
+        *子元素：
+        * box-ordinal-group(子盒子顺序的序号，越小越靠前)
+        * flex-shrink (收缩)
+        * flex-grow (放大):
+        * 当所有子元素宽度或者高度没有撑满父元素，
+        * flex-grow设置了父元素空白没有被利用的空间的分配比例
+        * 例如：父元素：800px, 3个li每个250px, 那么剩余50px, 然后三个设置的flex-grow为：1，10,1
+        * 那么第一个li的宽度变成250 + 50*（1/12）
+        * flex-shrink 设置子元素超出父元素后每个资源收缩比例
+        * 例如：父元素：600px, 3个li每个250px, 那么超出150px, 然后三个设置的flex-shrink为：1，10,1
+          * 那么第一个li的宽度变成250 - 150*（1/12）
+          * 第二个：250-150*（10/12）
+          *
+          * flex-grow决定了子盒子在原来大小的基础上再加多少
+          * flex-shrink决定了子盒子在原来大小的基础上再减多少
+        * */
+    </script>
+    <style>
+        #container {
+
+            display: -webkit-box;
+            display: -moz-box;
+            display: box;
+        }
+        .left {
+            /*float: left;*/
+            width: 160px;
+            padding:20px;
+            background-color: red;
+        }
+        .center {
+            /*float: left;*/
+            /*width: 500px;*/
+            -webkit-box-flex: 1;
+            -moz-box-flex: 1;
+            box-flex:1;
+            padding: 20px;
+            background-color: green;
+        }
+        .right {
+            /*float: left;*/
+            width: 200px;
+            padding: 20px;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div class="left">
+        <ul>
+            <li>我的博文</li>
+            <li>我的故事</li>
+            <li>我的资料</li>
+        </ul>
+    </div>
+    <div class="center">
+        <h2>浅谈作用域</h2>
+        <p>作用域本质：
+            1.某个变量在这个作用域下的值；
+            2.在这个作用域中可以访问哪些变量，对象，函数
+            局部作用域、全局作用域
+            局部变量、全局变量
+            原则：
+            大作用域不能访问、修改小作用域的变量；反之可以。
+            变量生命周期：
+            函数中的局部变量，在函数调用的时候才真正创建，函数执行完成后，就销毁不存在了。
+            作用域本质：
+            1.某个变量在这个作用域下的值；
+            2.在这个作用域中可以访问哪些变量，对象，函数
+            局部作用域、全局作用域
+            局部变量、全局变量
+            原则：
+            大作用域不能访问、修改小作用域的变量；反之可以。
+            变量生命周期：
+            函数中的局部变量，
+
+            作用域本质：
+            1.某个变量在这个作用域下的值；
+            2.在这个作用域中可以访问哪些变量，对象，函数
+            局部作用域、全局作用域
+            局部变量、全局变量
+            原则：
+            大作用域不能访问、修改小作用域的变量；反之可以。
+            变量生命周期：
+            函数中的局部变量，
+
+        </p>
+    </div>
+    <div class="right">
+        <ul>
+            <li>思软科技H5培训</li>
+            <li>思软科技CSS3技术</li>
+            <li>挖掘机</li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>
